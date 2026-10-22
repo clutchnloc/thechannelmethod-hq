@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Adriane's Channel HQ | The Clutch Channel Method</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700&family=Allura&display=swap">
+<style>
+/* Layout: brand header band, sticky tab bar, one working panel per tab; checkerboard strip as the only ornament (matches Brittany's Channel HQ) */
+:root{
+  --bg:#F6F4FB; --surface:#FFFFFF; --ink:#16131D; --muted:#5E5870; --line:#E2DDEE;
+  --purple:#6E4FD0; --purple-soft:#ECE6FB; --lime:#9DBB5A; --lime-soft:#EEF4E0; --lime-ink:#3F5418;
+  --warn:#B4610E; --warn-soft:#FBEEDD; --done:#2F7D4A;
+  --band:#16131D; --band-ink:#F1EEF8; --band-muted:#C9C2DA; --band-lime:#B5D27A; --band-purple:#A48BF2;
+  --display:"Anton","Impact","Arial Narrow",sans-serif;
+  --body:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --script:"Allura","Brush Script MT",cursive;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121017; --surface:#1C1824; --ink:#F1EEF8; --muted:#A49DB8; --line:#2E2839;
+  --purple:#A48BF2; --purple-soft:#2A2340; --lime:#B5D27A; --lime-soft:#24301A; --lime-ink:#CFE6A0;
+  --warn:#F0A55A; --warn-soft:#33240F; --done:#6FCB8F; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121017; --surface:#1C1824; --ink:#F1EEF8; --muted:#A49DB8; --line:#2E2839;
+  --purple:#A48BF2; --purple-soft:#2A2340; --lime:#B5D27A; --lime-soft:#24301A; --lime-ink:#CFE6A0;
+  --warn:#F0A55A; --warn-soft:#33240F; --done:#6FCB8F; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{background:var(--band);color:var(--band-ink)}
+header.top .wrap{padding-block:28px 22px;display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:flex-end}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--band-lime);font-weight:600}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,6vw,56px);line-height:1;margin:6px 0 0;letter-spacing:.01em;text-wrap:balance}
+h1 .sc{font-family:var(--script);color:var(--band-purple);font-size:1.15em;letter-spacing:0;margin-right:.1em}
+.sub{color:var(--band-muted);margin:8px 0 0;max-width:60ch}
+.launch{background:#6E4FD0;color:#fff;border-radius:14px;padding:14px 18px;min-width:220px}
+.launch b{font-family:var(--display);font-weight:400;font-size:34px;display:block;line-height:1.05}
+.launch span{font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.checker{height:14px;background:repeating-conic-gradient(var(--band) 0 25%,var(--band-ink) 0 50%) 0 0/14px 14px}
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--band)}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:none}
+nav.tabs button{font:inherit;font-size:14px;font-weight:600;white-space:nowrap;border:0;background:transparent;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button[aria-selected="true"]{background:var(--purple);color:#fff}
+nav.tabs button:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+main .wrap{padding-block:28px 64px}
+section.panel{display:grid;gap:22px}
+h2{font-family:var(--display);font-weight:400;font-size:30px;letter-spacing:.01em;margin:0;line-height:1.1;text-wrap:balance}
+h3{font-size:16px;margin:0 0 6px;font-weight:700}
+p{margin:0}
+.lead{color:var(--muted);max-width:68ch}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;min-width:0}
+.card.accent{border-color:var(--purple);box-shadow:inset 4px 0 0 var(--purple)}
+.label{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:6px}
+ul.clean{margin:0;padding-left:18px;display:grid;gap:4px}
+.stat{font-family:var(--display);font-size:32px;line-height:1;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:999px;letter-spacing:.02em;white-space:nowrap}
+.p-truth{background:var(--purple-soft);color:var(--purple)}
+.p-method{background:var(--warn-soft);color:var(--warn)}
+.p-journey{background:var(--lime-soft);color:var(--lime-ink)}
+.p-long{background:var(--ink);color:var(--bg)}
+.p-short{background:var(--line);color:var(--ink)}
+.p-wait{background:var(--warn-soft);color:var(--warn)}
+.p-ready{background:var(--lime-soft);color:var(--lime-ink)}
+.alert{background:var(--warn-soft);border:1px solid var(--warn);border-radius:14px;padding:16px 18px;color:var(--ink)}
+.alert b{color:var(--warn)}
+.weeks{display:grid;gap:10px}
+.week{display:grid;grid-template-columns:130px 1fr;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.week.launchwk{border-color:var(--purple);background:var(--purple-soft)}
+.week.now{border-color:var(--lime);box-shadow:inset 4px 0 0 var(--lime)}
+.week .when{font-weight:700;font-size:14px}
+.week .when small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.week ul{margin:4px 0 0;padding-left:18px}
+@media (max-width:560px){.week{grid-template-columns:1fr;gap:4px}}
+.check{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px solid var(--line)}
+.check:first-of-type{border-top:0}
+.check input{width:18px;height:18px;margin-top:3px;accent-color:var(--purple);flex:none}
+.check label{cursor:pointer}
+.check .due{display:block;font-size:12.5px;color:var(--muted)}
+.check.is-done label{color:var(--muted);text-decoration:line-through}
+.progress{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:8px}
+.progress i{display:block;height:100%;background:var(--lime);width:0;transition:width .3s}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:6px 12px;border-radius:999px;cursor:pointer}
+.filters button[aria-pressed="true"]{border-color:var(--purple);color:var(--purple);background:var(--purple-soft)}
+.vids{display:grid;gap:12px}
+.vid{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:grid;grid-template-columns:96px 1fr;gap:16px}
+.vid.long{border-color:var(--purple)}
+.vid .num{font-family:var(--display);font-size:13px;letter-spacing:.06em;color:var(--muted)}
+.vid .date{font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+.vid h3{font-size:17px;line-height:1.35}
+.vid .hook{font-style:italic;margin-top:4px}
+.vid .meta{color:var(--muted);font-size:13.5px;margin-top:4px}
+.vid details{margin-top:8px;font-size:14px}
+.vid summary{cursor:pointer;color:var(--purple);font-weight:600}
+.vid .src{font-size:12.5px;color:var(--muted);margin-top:6px}
+@media (max-width:560px){.vid{grid-template-columns:1fr;gap:6px}}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.tablewrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.angles{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.angle{border:1px dashed var(--purple);border-radius:12px;padding:14px;background:var(--surface)}
+.angle b{font-family:var(--display);font-weight:400;font-size:22px;color:var(--purple);display:block}
+.counts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.notice{background:var(--lime-soft);color:var(--ink);border-bottom:1px solid var(--line);font-size:14px}
+.notice .wrap{padding-block:12px}
+.notice .upd{display:inline-block;margin-left:6px;color:var(--muted);font-size:12.5px;white-space:nowrap}
+.site-foot{background:var(--band);color:var(--band-muted);font-size:13px}
+.site-foot .wrap{padding-block:18px;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline}
+.site-foot .brand{font-family:var(--display);color:var(--band-lime);font-size:18px;letter-spacing:.02em}
+.foot{color:var(--muted);font-size:12.5px;margin-top:8px}
+.sync{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted)}
+.sync::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--muted)}
+.sync.live::before{background:var(--done)}
+.sync.off::before{background:var(--warn)}
+input[type=text],input[type=url],textarea,select{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;min-width:0}
+textarea{width:100%;min-height:72px;resize:vertical}
+.btn{font:inherit;font-size:13px;font-weight:600;border:0;background:var(--purple);color:#fff;padding:8px 14px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.btn:disabled,input:disabled,select:disabled,textarea:disabled{opacity:.55;cursor:not-allowed}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.row > input[type=text],.row > input[type=url]{flex:1 1 180px}
+.check .x{margin-left:auto;border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:18px;line-height:1;padding:0 4px}
+.track{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.track a{color:var(--purple);font-weight:600;font-size:13.5px}
+.st-Published{background:var(--lime-soft);color:var(--lime-ink)}
+.st-Filmed,.st-Edited,.st-Scripted{background:var(--purple-soft);color:var(--purple)}
+.st-Planned{background:var(--line);color:var(--muted)}
+.post{display:grid;gap:4px;padding:12px 0;border-top:1px solid var(--line)}
+.post:first-child{border-top:0}
+.post .who{display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px}
+.post .who img{width:24px;height:24px;border-radius:50%}
+.post .who time{font-weight:400;color:var(--muted);font-size:12.5px}
+.post p{white-space:pre-wrap}
+.saved{font-size:12.5px;color:var(--done)}
+.empty{color:var(--muted);font-size:14px;padding:6px 0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">The Clutch Channel Method · Core</div>
+      <h1><span class="sc">Adriane's</span> Channel HQ</h1>
+      <p class="sub">Loc'd &amp; Lovely, Tampa. Your launch plan, 30-day content bank, filming system and to-dos in one place. Built from your intake form.</p>
+    </div>
+    <div class="launch"><span>First YouTube video</span><b>Live by Nov 18</b><span id="countdown"></span></div>
+  </div>
+  <div class="checker"></div>
+</header>
+<div class="notice"><div class="wrap"><b>Your personal view.</b> Clutch updates this page every week, so check back for new resources and changes. Your checkmarks save on your device only, and Clutch won't see them. Text Clutch with questions or when you finish a to-do. <span class="upd">Last updated Oct 22, 2026</span></div></div>
+
+<nav class="tabs" aria-label="Dashboard sections"><div class="wrap" role="tablist" id="tablist"></div></nav>
+
+<main><div class="wrap" id="panels">
+
+<!-- OVERVIEW -->
+<section class="panel" id="overview" role="tabpanel">
+  <div class="grid">
+    <div class="card accent">
+      <div class="label">Your 90-day goals</div>
+      <ul class="clean">
+        <li>Get comfortable on camera so women feel a connection before they sit in your chair</li>
+        <li>Film, edit and post consistently without making every video a production</li>
+        <li>Reach more women in Tampa and turn that interest into bookings</li>
+        <li><b>Bonus:</b> sell your loc products by showing where they fit between appointments</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="label">The bigger picture</div>
+      <p>Help women get their confidence back and understand their locs between appointments. Put down roots in Tampa: house calls for seniors, and one day a free or low-cost summer cohort that teaches teens to loc and make their own products.</p>
+    </div>
+    <div class="card">
+      <div class="label">Your weekly content time</div>
+      <div class="stat">10–20 hrs</div>
+      <p class="foot">The plan here is sized to about 12 hours a week, so a busy client week doesn't break it.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>The funnel</h2>
+    <p class="lead" style="margin-top:6px">One long-form YouTube video answers a question Tampa women are already searching. You cut 3 short clips from it for YouTube Shorts, Instagram Reels and TikTok, and every clip points back to the full video and your booking link. Film once, post everywhere, book from it.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="label">Key dates</div>
+      <table>
+        <tr><td class="num">Oct 28</td><td>Content Bank review (Week 2 lesson)</td></tr>
+        <tr><td class="num">Oct 30</td><td>10+ old IG and TikTok videos scheduled as Shorts</td></tr>
+        <tr><td class="num">Nov 18</td><td>Launch: video #1 published</td></tr>
+        <tr><td class="num">Dec 2</td><td>Video #2 + mid-cohort teardown of your channel</td></tr>
+        <tr><td class="num">Jan 27</td><td>Cohort graduation + final teardown</td></tr>
+        <tr><td class="num">Feb 1, 2027</td><td>YouTube's new monetization rules start</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <div class="label">YouTube monetization, the real numbers</div>
+      <p style="margin-bottom:8px">To earn ad revenue you need <b>1,000 subscribers</b> plus one of these:</p>
+      <ul class="clean">
+        <li><b>Now:</b> 4,000 watch hours (12 months) or 10M Shorts views (90 days)</li>
+        <li><b>From Feb 1, 2027:</b> 8,000 watch hours (365 days) or 20M Shorts views (90 days)</li>
+      </ul>
+      <p class="foot">The 500-subscriber tier for fan funding and Shopping is not changing. That's a realistic first milestone, and Shopping is where your loc products come in.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="label">What's included in Core</div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+      <div><h3>13 live lessons</h3><p class="foot" style="margin:0">Wednesdays 7–8:30 PM ET, recorded</p></div>
+      <div><h3>Content Bank review</h3><p class="foot" style="margin:0">Individual walkthrough, this week</p></div>
+      <div><h3>30 days mapped</h3><p class="foot" style="margin:0">See Content Bank</p></div>
+      <div><h3>6 co-work sessions</h3><p class="foot" style="margin:0">Thursdays 7 PM ET</p></div>
+      <div><h3>5 Saturday labs</h3><p class="foot" style="margin:0">Incl. the Editing Intensive, Dec 12</p></div>
+      <div><h3>2 channel teardowns</h3><p class="foot" style="margin:0">Dec 2 and Jan 27</p></div>
+      <div><h3>Template Pack</h3><p class="foot" style="margin:0">5 CapCut + 5 Canva, Dec 9</p></div>
+      <div><h3>Accountability community</h3><p class="foot" style="margin:0">In Skool</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="panel" id="roadmap" role="tabpanel" hidden>
+  <div>
+    <h2>Launch roadmap</h2>
+    <p class="lead" style="margin-top:6px">Your action steps for every cohort week. Your old Instagram and TikTok videos go up as Shorts first, so the channel isn't empty on launch day. Then a new long-form video most lesson weeks.</p>
+  </div>
+  <div class="weeks" id="weeks"></div>
+</section>
+
+<!-- CONTENT BANK -->
+<section class="panel" id="content" role="tabpanel" hidden>
+  <div>
+    <h2>30-day content bank</h2>
+    <p class="lead" style="margin-top:6px">Nov 16 to Dec 15. Four long-form videos, each with 3 short clips, plus 14 stand-alone Shorts: 30 pieces in all. Built from the questions your clients ask, the myths you correct in your chair and the topics you can teach without research.</p>
+  </div>
+  <div class="counts" id="counts"></div>
+  <div class="filters" id="filters"></div>
+  <div class="vids" id="vids"></div>
+  <p class="foot">Titles are working titles. We'll tighten them, and your thumbnails, in your Content Bank review.</p>
+</section>
+
+<!-- FILMING -->
+<section class="panel" id="filming" role="tabpanel" hidden>
+  <div>
+    <h2>Filming system</h2>
+    <p class="lead" style="margin-top:6px">Film while you work so content doesn't add time to appointments. Microloc and Sisterlock work lives in the details, so the overhead angle does most of the teaching.</p>
+  </div>
+  <div class="angles">
+    <div class="angle"><b>Angle 1 · Overhead</b>Hands, grid and tool. The technique shot for parting, retie patterns and 3- vs. 4-point rotations.</div>
+    <div class="angle"><b>Angle 2 · Side</b>You and your client together. Shows the care and the conversation, which is what you want to be known for.</div>
+    <div class="angle"><b>Angle 3 · Front</b>You talking to camera. Explain what you're doing and why. Start with 20-second takes.</div>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <h3>Studio days</h3>
+      <p>Mount the phone overhead before your first client. Grab 10–20 seconds per angle at each step: consultation, sectioning, the grid, the retie, the reveal.</p>
+    </div>
+    <div class="card">
+      <h3>House calls</h3>
+      <p>A small mobile kit: phone, clamp mount or mini tripod, clip mic. Hands-only footage works well here and protects your senior clients' privacy.</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="label">Batch day, every other week</div>
+      <table>
+        <tr><td class="num">Client hours</td><td>B-roll during 1–2 services (with consent), 3-angle framework</td></tr>
+        <tr><td class="num">60–90 min</td><td>Talking-head A-roll for 2 videos, on your lightest day</td></tr>
+        <tr><td class="num">10 min</td><td>Back up footage off your phone the same day</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <div class="label">Your weekly time budget (about 12 hrs)</div>
+      <table>
+        <tr><th>Task</th><th>Batch wk</th><th>Edit wk</th></tr>
+        <tr><td>Voice-memo ideas + plan</td><td class="num">1 h</td><td class="num">1 h</td></tr>
+        <tr><td>Filming</td><td class="num">3 h</td><td class="num">1 h</td></tr>
+        <tr><td>Editing in CapCut</td><td class="num">4 h</td><td class="num">6 h</td></tr>
+        <tr><td>Clip Shorts, post, reply to comments</td><td class="num">4 h</td><td class="num">4 h</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Cross-posting routine</h3>
+    <ul class="clean">
+      <li>Publish the long-form video on YouTube first, with your booking link in the description.</li>
+      <li>Cut 3 clips of 30–60 seconds. Post them across the week to YouTube Shorts, Reels on _lovely_locs and TikTok on Locd.lovely1.</li>
+      <li>Every clip caption points back to the full video. Put your YouTube channel in your link in bio.</li>
+      <li>Say "Tampa" in your titles and descriptions so local search finds you.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Consent and privacy</h3>
+    <p>Ask before you film, every time. Get a yes on camera or in writing, film hands and hair only for anyone who prefers it, and never show a client's face without permission. You just moved, so keep your house number, mail and location tags off camera, and give your address only after someone books.</p>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section class="panel" id="gear" role="tabpanel" hidden>
+  <div>
+    <h2>Gear &amp; resources</h2>
+    <p class="lead" style="margin-top:6px">What you'll get through the cohort. Items marked "coming" show up here when they drop.</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Item</th><th>What it's for</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td><b>Custom Content Bank</b><br><span class="foot">30 days mapped</span></td><td>Your first month of videos, titles, hooks and thumbnail ideas</td><td><span class="pill p-ready">Ready</span></td></tr>
+        <tr><td><b>Channel Plan Template</b></td><td>Your channel statement, pillars and posting cadence</td><td><span class="pill p-ready">Ready</span></td></tr>
+        <tr><td><b>CapCut</b><br><span class="foot">Desktop and mobile</span></td><td>Your editing app. Install it in Week 2 and make a first cut</td><td><span class="pill p-ready">Ready</span></td></tr>
+        <tr><td><b>Back Catalog Sprint checklist</b></td><td>Moving your IG and TikTok videos onto YouTube Shorts</td><td><span class="pill p-wait">Week 2</span></td></tr>
+        <tr><td><b>Correction Video script template</b></td><td>Calling out loc myths without drama</td><td><span class="pill p-wait">Week 3</span></td></tr>
+        <tr><td><b>Consent language + privacy audit</b></td><td>What to say before filming; what to keep off camera</td><td><span class="pill p-wait">Week 5</span></td></tr>
+        <tr><td><b>Clutch Template Pack + swipe file</b></td><td>5 CapCut edits, 5 Canva thumbnails, hooks and titles</td><td><span class="pill p-wait">Dec 9</span></td></tr>
+        <tr><td><b>12-item upload checklist</b></td><td>Optimizing every video, including local search</td><td><span class="pill p-wait">Week 10</span></td></tr>
+        <tr><td><b>The Clutch Channel Method eGuide</b></td><td>The full written system</td><td><span class="pill p-wait">After cohort</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h3>Writing scripts in your own voice</h3>
+    <p>Voice-memo your answers between clients, in your own words, first. Then use an AI tool to organize them and cut filler. It keeps every script sounding like you.</p>
+  </div>
+</section>
+
+<!-- TO-DO -->
+<section class="panel" id="todo" role="tabpanel" hidden>
+  <div>
+    <h2>Your to-do list</h2>
+    <p class="lead" style="margin-top:6px">Your checkmarks save on this phone or computer only. Clutch can't see them, so text Clutch when you finish something.</p>
+    <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+    <p class="foot" id="progtext"></p>
+  </div>
+  <div class="card" id="checklist"></div>
+
+  <div><h2 style="font-size:24px">Bring to your Content Bank review</h2></div>
+  <div class="card accent">
+    <h3>1. Your YouTube channel</h3>
+    <p>Your intake didn't list a YouTube channel. Do you have one? If not, we'll pick a name and handle together. "Loc'd &amp; Lovely" plus Tampa helps local search.</p>
+  </div>
+  <div class="grid">
+    <div class="card"><h3>2. On camera</h3><p>Want to ease in? Start with hands-only clips and voiceover, then add talking-head takes once filming feels normal.</p></div>
+    <div class="card"><h3>3. Your batch day</h3><p>Which client day is lightest? That becomes your filming day every other week.</p></div>
+    <div class="card"><h3>4. Your products</h3><p>Which products do you sell now, and which one would you show first? It goes into video #2 and the last Short in your bank.</p></div>
+  </div>
+</section>
+
+
+</div></main>
+<footer class="site-foot"><div class="wrap"><span class="brand">Channel HQ</span><span>The Clutch Channel Method · Core</span></div></footer>
+
+<script>
+const TABS=[["overview","Overview"],["roadmap","Roadmap"],["content","Content Bank"],["filming","Filming System"],["gear","Gear & Resources"],["todo","To-Do"]];
+const tl=document.getElementById("tablist");
+function show(id){
+  TABS.forEach(([t])=>{document.getElementById(t).hidden=t!==id;const b=document.getElementById("tab-"+t);b.setAttribute("aria-selected",t===id)});
+  try{history.replaceState(null,"","#"+id)}catch(e){}
+}
+TABS.forEach(([id,name])=>{const b=document.createElement("button");b.id="tab-"+id;b.setAttribute("role","tab");b.textContent=name;b.onclick=()=>show(id);tl.appendChild(b)});
+const h=(location.hash||"").slice(1);show(TABS.some(t=>t[0]===h)?h:"overview");
+
+(function(){const d=Math.ceil((new Date(2026,10,18,23,59)-new Date())/864e5);document.getElementById("countdown").textContent=d>0?d+" days to go":(d>-7?"Launch week":"Launched");})();
+
+const P={truth:["Loc Truths","p-truth"],method:["Method Breakdowns","p-method"],journey:["Your Loc Journey","p-journey"]};
+const pill=k=>`<span class="pill ${P[k][1]}">${P[k][0]}</span>`;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+// Roadmap
+const WEEKS=[
+ ["Wk 1 · Oct 21","Positioning",["Submit intake form (done Oct 20)","Create or clean up your YouTube channel: name, handle, banner, About","Post your one-sentence channel statement","Fill in the Channel Plan Template","Write a description template with your booking link","Add \"How did you find me?\" to your booking form","Screenshot where your channel stands today"],[]],
+ ["Wk 2 · Oct 28","Blueprint + Back Catalog",["Content Bank review","Schedule 10+ of your best IG and TikTok videos as Shorts by Oct 30 (clear client consent first)","Finalize your three pillars and pick your first six videos","Block filming days through December","Set your channel trailer and featured video","Install CapCut and make a first cut"],[]],
+ ["Wk 3 · Nov 4","Scripting",["Outlines for videos 1–3. Video 2 is your Correction Video: \"Oil Is NOT Moisturizing Your Locs\"","Final titles and 3 hooks each","Thumbnail concepts and a shot list for your first batch day"],[]],
+ ["Wk 4 · Nov 11","Second Brain + First Publish",["Record five voice memos between clients","Set up your idea bank with tags","Film video #1: Sisterlocks vs. Microlocs vs. Interlocking"],["film"]],
+ ["Wk 5 · Nov 18","LAUNCH",["Video #1 goes live today","Clip and post its 3 Shorts across YouTube, Reels and TikTok","Set up your filming space and run the privacy audit","Lab 1 Sat Nov 21: Setup & Space"],["launch"]],
+ ["Wk 6 · Nov 25","Batch day",["Film videos #2 and #3 before Dec 5 (recorded lesson, Thanksgiving week)","Edit video #2"],["film"]],
+ ["Wk 7 · Dec 2","Teardown",["Publish video #2: the oil Correction Video","Mid-cohort teardown of your channel","Lab 2 Sat Dec 5: The Big Lab"],[]],
+ ["Wk 8 · Dec 9","Edit week",["Template Pack drops. Edit video #3 with it","Publish video #3: Consultation to First Retie","Lab 3 Sat Dec 12: Editing Intensive"],[]],
+ ["Wk 9 · Dec 16","Packaging",["Publish video #4: How Much Do Microlocs Cost?","Re-thumbnail videos #1 and #2 and run a Test & Compare","Set a 10-minute comment routine and schedule your holiday posts"],[]],
+ ["Dec 21 – Jan 3","Holiday break",["No live calls. Scheduled Shorts, one long-form video and two community posts keep you visible"],[]],
+ ["Wk 10 · Jan 6","Studio",["Apply for YPP if eligible; set up AdSense and tax info","Re-optimize every video with \"Tampa\" search terms","Publish video #5"],[]],
+ ["Wk 11–12 · Jan 13–20","Shortform + Distribution",["Turn your best long-form into 5 Shorts; film 10 originals","Write your two-way cross-posting SOP and 30-day calendar","Submit your channel for the final teardown by Jan 24"],[]],
+ ["Wk 13 · Jan 27","Graduation",["Count your \"found you on YouTube\" bookings","Connect your loc product store to your channel","Build your Q1 plan"],[]],
+];
+document.getElementById("weeks").innerHTML=WEEKS.map(([d,t,items,f])=>`
+ <div class="week ${f.includes("launch")?"launchwk":""}">
+  <div class="when">${esc(d)}<small>${esc(t)}</small></div>
+  <div><ul>${items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul></div>
+ </div>`).join("");
+
+// Content bank: [week, format, pillar, title, hook, note/thumbnail, clips, source]
+const VIDS=[
+ ["Nov 16","long","method","Sisterlocks vs. Microlocs vs. Interlocking: Which Loc Method Fits Your Hair?","\"Three clients asked for microlocs last month. Only one of them actually wanted microlocs.\"","Thumbnail: three close-up grids side by side, labeled, you pointing. Text: WHICH ONE?",["Sisterlocks vs. microlocs in 30 seconds","3-point vs. 4-point rotation on real hair","How I choose a grid size for microlocs"],"Intake: loc comparisons you correct + topics you teach"],
+ ["Nov 16","short","journey","What to bring to your loc consultation","\"Don't walk into a loc consultation empty-handed.\"","",[],"Top client question #4"],
+ ["Nov 16","short","truth","Is my hair long enough for locs?","\"The answer depends on one thing most people never ask about.\"","",[],"Top client question #3"],
+ ["Nov 16","short","truth","Low porosity locs: why your products just sit there","\"You're not using the wrong product. You're using it the wrong way.\"","",[],"Intake: porosity myths"],
+ ["Nov 23","short","journey","How to care for your locs between appointments","\"Your locs are mine for three hours and yours for six weeks.\"","",[],"Top client question #5"],
+ ["Nov 23","short","journey","A day of house calls in Tampa","\"Some of my clients can't come to me, so I go to them.\"","",[],"Intake: senior house calls"],
+ ["Nov 23","short","truth","Density vs. texture: why your locs won't look like hers","\"That inspo photo has a different density than you.\"","",[],"Intake: density questions"],
+ ["Nov 30","long","truth","Oil Is NOT Moisturizing Your Locs (Here's What Is)","\"I correct this in my chair every week, so let's settle it once.\"","Your Correction Video. Thumbnail: oil in one hand, water in the other. Text: STOP OILING",["The 10-second oil test","The oil myth, corrected without the drama","Moisture vs. oil: the order I apply products"],"Intake: \"oil is not moisturizing\""],
+ ["Nov 30","short","method","Why retie consistency matters","\"Skipping one retie costs you more than one appointment.\"","",[],"Topics you teach: retie schedules"],
+ ["Nov 30","short","journey","The loc stages, quickly","\"Month 2 looks messy on purpose.\"","",[],"Topics you teach: loc stages"],
+ ["Nov 30","short","journey","Why I started my loc journey","\"I know what it feels like to struggle with your hair. That's how this started.\"","",[],"Intake: your story"],
+ ["Dec 7","long","journey","Getting Microlocs in Tampa: Consultation to First Retie","\"Here's exactly what happens from the moment you book to your first retie.\"","Thumbnail: one client before and after. Text: CONSULT → RETIE",["What happens at your first retie","3 things to stop doing between appointments","Sisterlocks retie: what I'm actually doing"],"Top client question #4 + Tampa goal"],
+ ["Dec 7","short","journey","Discovering Tampa: where you'll find me","\"I moved to Tampa October 1st. Here's my new city.\"","",[],"Intake: interests"],
+ ["Dec 7","short","truth","The hair density questions I get every week","\"Thin hair can absolutely loc. Here's how I plan it.\"","",[],"Intake: density questions"],
+ ["Dec 7","short","journey","Setting realistic expectations for new locs","\"Your locs won't look like month 24 in month 2, and that's the plan.\"","",[],"Topics you teach: expectations"],
+ ["Dec 14","long","truth","How Much Do Microlocs Cost? What Actually Affects the Price","\"Price is the first question every client asks. Here's the honest breakdown.\"","Thumbnail: you with a price-tag graphic. Text: WHY IT COSTS THIS",["Why microloc prices vary so much","Why establishment day takes all day","Microloc maintenance: how often and why"],"Top client questions #1 and #2"],
+ ["Dec 14","short","truth","The loc product I send clients home with","\"This is the one I recommend between appointments.\"","",[],"Bonus goal: your products"],
+ ["Dec 14","short","journey","Booking with Loc'd & Lovely in Tampa","\"If you're in Tampa and thinking about locs, this is for you.\"","",[],"Goal: Tampa bookings"],
+];
+const longCount=VIDS.filter(v=>v[1]==="long").length, clipCount=VIDS.reduce((n,v)=>n+v[6].length,0), shortCount=VIDS.filter(v=>v[1]==="short").length;
+document.getElementById("counts").innerHTML=[["Long-form",longCount],["Clips from long-form",clipCount],["Stand-alone Shorts",shortCount],["Total pieces",longCount+clipCount+shortCount]]
+ .map(([l,n])=>`<div class="card"><div class="label">${l}</div><div class="stat">${n}</div></div>`).join("");
+let filter="all";
+const fb=document.getElementById("filters");
+[["all","All"],["long","Long-form only"],...Object.entries(P).map(([k,v])=>[k,v[0]])].forEach(([k,n])=>{const b=document.createElement("button");b.type="button";b.textContent=n;b.dataset.k=k;b.onclick=()=>{filter=k;renderVids()};fb.appendChild(b)});
+function renderVids(){
+ [...fb.children].forEach(b=>b.setAttribute("aria-pressed",b.dataset.k===filter));
+ let lf=0,sh=0;
+ const rows=VIDS.map((v,i)=>({v,label:v[1]==="long"?"LONG-FORM "+String(++lf).padStart(2,"0"):"SHORT "+String(++sh).padStart(2,"0")}));
+ document.getElementById("vids").innerHTML=rows.filter(({v})=>filter==="all"||(filter==="long"?v[1]==="long":v[2]===filter)).map(({v:[d,f,k,t,hook,note,clips,src],label})=>`
+  <article class="vid ${f==="long"?"long":""}">
+   <div><div class="num">${label}</div><div class="date">Wk of ${d}</div></div>
+   <div>
+    <div class="tags" style="margin:0 0 6px">${f==="long"?'<span class="pill p-long">Long-form</span>':'<span class="pill p-short">Short</span>'}${pill(k)}</div>
+    <h3>${esc(t)}</h3>
+    <p class="hook">${esc(hook)}</p>
+    ${note?`<p class="meta">${esc(note)}</p>`:""}
+    ${clips.length?`<details><summary>3 short clips</summary><ul class="clean" style="margin-top:6px">${clips.map(s=>`<li>${esc(s)}</li>`).join("")}</ul></details>`:""}
+    <p class="src">From: ${esc(src)}</p>
+   </div>
+  </article>`).join("");
+}
+renderVids();
+
+
+// Checklist (saves on this device only)
+const TODO=[
+ ["Submit your intake form","Done Oct 20"],
+ ["Create or clean up your YouTube channel","Oct 28"],
+ ["Post your one-sentence channel statement","Oct 28"],
+ ["Fill in the Channel Plan Template","Oct 28"],
+ ["Write a description template with your booking link","Oct 28"],
+ ["Add \"How did you find me?\" to your booking form","Oct 28"],
+ ["Screenshot your channel stats today","Oct 28"],
+ ["Schedule 10+ old IG/TikTok videos as Shorts","Oct 30"],
+ ["Finalize your three pillars","Nov 4"],
+ ["Block filming days through December","Nov 4"],
+ ["Install CapCut and make a first cut","Nov 4"],
+ ["Outline videos 1–3 with titles and 3 hooks each","Nov 11"],
+ ["Film video #1","Nov 15"],
+ ["Publish video #1","Nov 18"],
+];
+const KEY="aj-todo-v1";let st={0:true};try{const v=JSON.parse(localStorage.getItem(KEY)||"null");if(v)st=v}catch(e){}
+const cl=document.getElementById("checklist");
+function renderTodo(){
+ cl.innerHTML=TODO.map(([t,d],i)=>`<div class="check ${st[i]?"is-done":""}"><input type="checkbox" id="todo-${i}" ${st[i]?"checked":""}><label for="todo-${i}">${esc(t)}<span class="due">${esc(d)}</span></label></div>`).join("");
+ const n=TODO.filter((_,i)=>st[i]).length;document.getElementById("bar").style.width=(n/TODO.length*100)+"%";
+ document.getElementById("progtext").textContent=n+" of "+TODO.length+" done";
+}
+cl.addEventListener("change",e=>{const i=+e.target.id.split("-")[1];st[i]=e.target.checked;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(err){}renderTodo()});
+renderTodo();
+</script>
+
+</body>
+</html>
