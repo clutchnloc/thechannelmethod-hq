@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Brittany's Channel HQ | The Clutch Channel Method</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700&family=Allura&display=swap">
+<style>
+/* Layout: brand header band, sticky tab bar, one working panel per tab; checkerboard strip as the only ornament */
+:root{
+  --bg:#F6F4FB; --surface:#FFFFFF; --ink:#16131D; --muted:#5E5870; --line:#E2DDEE;
+  --purple:#6E4FD0; --purple-soft:#ECE6FB; --lime:#9DBB5A; --lime-soft:#EEF4E0; --lime-ink:#3F5418;
+  --warn:#B4610E; --warn-soft:#FBEEDD; --done:#2F7D4A;
+  --display:"Anton","Impact","Arial Narrow",sans-serif;
+  --body:"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --script:"Allura","Brush Script MT",cursive;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121017; --surface:#1C1824; --ink:#F1EEF8; --muted:#A49DB8; --line:#2E2839;
+  --purple:#A48BF2; --purple-soft:#2A2340; --lime:#B5D27A; --lime-soft:#24301A; --lime-ink:#CFE6A0;
+  --warn:#F0A55A; --warn-soft:#33240F; --done:#6FCB8F; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121017; --surface:#1C1824; --ink:#F1EEF8; --muted:#A49DB8; --line:#2E2839;
+  --purple:#A48BF2; --purple-soft:#2A2340; --lime:#B5D27A; --lime-soft:#24301A; --lime-ink:#CFE6A0;
+  --warn:#F0A55A; --warn-soft:#33240F; --done:#6FCB8F; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{background:#16131D;color:#F1EEF8}
+header.top .wrap{padding-block:28px 22px;display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:flex-end}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#B5D27A;font-weight:600}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,6vw,56px);line-height:1;margin:6px 0 0;letter-spacing:.01em;text-wrap:balance}
+h1 .sc{font-family:var(--script);color:#A48BF2;font-size:1.15em;letter-spacing:0;margin-right:.1em}
+.sub{color:#C9C2DA;margin:8px 0 0;max-width:60ch}
+.launch{background:#6E4FD0;color:#fff;border-radius:14px;padding:14px 18px;min-width:220px}
+.launch b{font-family:var(--display);font-weight:400;font-size:34px;display:block;line-height:1.05}
+.launch span{font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.checker{height:14px;background:repeating-conic-gradient(#16131D 0 25%,#F1EEF8 0 50%) 0 0/14px 14px}
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:#16131D}
+nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:none}
+nav.tabs button{font:inherit;font-size:14px;font-weight:600;white-space:nowrap;border:0;background:transparent;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button[aria-selected="true"]{background:var(--purple);color:#fff}
+nav.tabs button:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+main .wrap{padding-block:28px 64px}
+section.panel{display:grid;gap:22px}
+h2{font-family:var(--display);font-weight:400;font-size:30px;letter-spacing:.01em;margin:0;line-height:1.1;text-wrap:balance}
+h3{font-size:16px;margin:0 0 6px;font-weight:700}
+p{margin:0}
+.lead{color:var(--muted);max-width:68ch}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;min-width:0}
+.card.accent{border-color:var(--purple);box-shadow:inset 4px 0 0 var(--purple)}
+.label{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:6px}
+ul.clean{margin:0;padding-left:18px;display:grid;gap:4px}
+.stat{font-family:var(--display);font-size:32px;line-height:1;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;font-size:11.5px;font-weight:600;padding:3px 10px;border-radius:999px;letter-spacing:.02em;white-space:nowrap}
+.p-edu{background:var(--purple-soft);color:var(--purple)}
+.p-life{background:var(--lime-soft);color:var(--lime-ink)}
+.p-pro{background:var(--warn-soft);color:var(--warn)}
+.p-salon{background:var(--line);color:var(--ink)}
+.p-wait{background:var(--warn-soft);color:var(--warn)}
+.p-ready{background:var(--lime-soft);color:var(--lime-ink)}
+.alert{background:var(--warn-soft);border:1px solid var(--warn);border-radius:14px;padding:16px 18px;color:var(--ink)}
+.alert b{color:var(--warn)}
+/* timeline */
+.weeks{display:grid;gap:10px}
+.week{display:grid;grid-template-columns:120px 1fr;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.week.launchwk{border-color:var(--purple);background:var(--purple-soft)}
+.week .when{font-weight:700;font-size:14px}
+.week .when small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.week ul{margin:4px 0 0;padding-left:18px}
+@media (max-width:560px){.week{grid-template-columns:1fr;gap:4px}}
+/* checklist */
+.check{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px solid var(--line)}
+.check:first-of-type{border-top:0}
+.check input{width:18px;height:18px;margin-top:3px;accent-color:var(--purple);flex:none}
+.check label{cursor:pointer}
+.check.is-done label{color:var(--muted);text-decoration:line-through}
+.progress{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:8px}
+.progress i{display:block;height:100%;background:var(--lime);width:0;transition:width .3s}
+/* content bank */
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:6px 12px;border-radius:999px;cursor:pointer}
+.filters button[aria-pressed="true"]{border-color:var(--purple);color:var(--purple);background:var(--purple-soft)}
+.vids{display:grid;gap:12px}
+.vid{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:grid;grid-template-columns:96px 1fr;gap:16px}
+.vid .num{font-family:var(--display);font-size:13px;letter-spacing:.06em;color:var(--muted)}
+.vid .date{font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+.vid h3{font-size:17px;line-height:1.35}
+.vid .meta{color:var(--muted);font-size:13.5px;margin-top:4px}
+.vid details{margin-top:8px;font-size:14px}
+.vid summary{cursor:pointer;color:var(--purple);font-weight:600}
+.vid .src{font-size:12.5px;color:var(--muted);margin-top:6px}
+@media (max-width:560px){.vid{grid-template-columns:1fr;gap:6px}}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.tablewrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.angles{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.angle{border:1px dashed var(--purple);border-radius:12px;padding:14px;background:var(--surface)}
+.angle b{font-family:var(--display);font-weight:400;font-size:22px;color:var(--purple);display:block}
+.pros{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.notice{background:var(--lime-soft);color:var(--ink);border-bottom:1px solid var(--line);font-size:14px}
+.notice .wrap{padding-block:12px}
+.notice .upd{display:inline-block;margin-left:6px;color:var(--muted);font-size:12.5px;white-space:nowrap}
+.site-foot{background:#16131D;color:#C9C2DA;font-size:13px}
+.site-foot .wrap{padding-block:18px;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline}
+.site-foot .brand{font-family:var(--display);color:#B5D27A;font-size:18px;letter-spacing:.02em}
+.foot{color:var(--muted);font-size:12.5px;margin-top:8px}
+.ownerbtn{font:inherit;font-size:12px;font-weight:600;margin-top:6px;border:1px solid var(--purple);color:var(--purple);background:transparent;border-radius:999px;padding:3px 10px;cursor:pointer;display:block}
+.when-done{font-size:12px;color:var(--muted);margin-left:6px;white-space:nowrap}
+.err{color:var(--warn);font-size:13px}
+a{color:var(--purple)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">The Clutch Channel Method · Founder VIP</div>
+      <h1><span class="sc">Brittany's</span> Channel HQ</h1>
+      <p class="sub">House of Bella Rose Salon. Your launch plan, 90-day content bank, filming system and to-dos in one place. Built from your intake form and our Oct 9 call.</p>
+    </div>
+    <div class="launch"><span>First YouTube video</span><b>Week of Nov 16</b><span id="countdown"></span></div>
+  </div>
+  <div class="checker"></div>
+</header>
+<div class="notice"><div class="wrap"><b>Your personal view.</b> Clutch updates this page every week, so check back for new resources and changes. Your checkmarks save on your device only, and Clutch won't see them. Text Clutch with questions or when you finish a to-do. <span class="upd">Last updated Oct 22, 2026</span></div></div>
+
+<nav class="tabs" aria-label="Dashboard sections"><div class="wrap" role="tablist" id="tablist"></div></nav>
+
+<main><div class="wrap" id="panels">
+
+<!-- OVERVIEW -->
+<section class="panel" id="overview" role="tabpanel">
+  <div class="grid">
+    <div class="card accent">
+      <div class="label">Your 90-day goals</div>
+      <ul class="clean">
+        <li>Post consistently on a schedule you can actually keep</li>
+        <li>Reach 5K followers on Instagram</li>
+        <li>Launch your YouTube channel with a 2-video intro series</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="label">The bigger picture</div>
+      <p>Less time behind the chair. Position yourself for education, mentorship and digital products, not just more local clients.</p>
+    </div>
+    <div class="card">
+      <div class="label">Your weekly content time</div>
+      <div class="stat">5–7 hrs</div>
+      <p class="foot">Every plan here is sized to fit that. Biggest challenges: finding time to film and editing.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>The funnel</h2>
+    <p class="lead" style="margin-top:6px">Plan and film one long-form YouTube video each week, then pull 6 shorts out of it. The shorts go to YouTube Shorts, Instagram Reels and TikTok, one a day, and each one points back to the full video. One shoot, one edit, a full week of posts.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="label">Key dates</div>
+      <table>
+        <tr><td class="num">Oct 21</td><td>Cohort starts (Wednesdays)</td></tr>
+        <tr><td class="num">Wk of Nov 16</td><td>Launch: About Me + first education video</td></tr>
+        <tr><td class="num">Jan 27</td><td>Cohort graduation</td></tr>
+        <tr><td class="num">Feb 1, 2027</td><td>YouTube's new monetization rules start</td></tr>
+        <tr><td class="num">Late Feb</td><td>Your extra 4 weeks of VIP support end</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <div class="label">YouTube monetization, the real numbers</div>
+      <p style="margin-bottom:8px">To earn ad revenue you need <b>1,000 subscribers</b> plus one of these:</p>
+      <ul class="clean">
+        <li><b>Now:</b> 4,000 watch hours (12 months) or 10M Shorts views (90 days)</li>
+        <li><b>From Feb 1, 2027:</b> 8,000 watch hours (365 days) or 20M Shorts views (90 days)</li>
+      </ul>
+      <p class="foot">The 500-subscriber tier for fan funding and Shopping is not changing. That's a realistic first milestone for a new channel.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="label">Your VIP perks</div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+      <div><h3>1:1 intensive</h3><p class="foot" style="margin:0">Completed Oct 9</p></div>
+      <div><h3>This dashboard</h3><p class="foot" style="margin:0">Review call to schedule</p></div>
+      <div><h3>90 days mapped</h3><p class="foot" style="margin:0">See Content Bank</p></div>
+      <div><h3>Thumbnail reviews</h3><p class="foot" style="margin:0">Monthly: Nov, Dec, Jan</p></div>
+      <div><h3>VIP hot seats</h3><p class="foot" style="margin:0">During cohort</p></div>
+      <div><h3>+4 weeks support</h3><p class="foot" style="margin:0">Through February</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="panel" id="roadmap" role="tabpanel" hidden>
+  <div>
+    <h2>Launch roadmap</h2>
+    <p class="lead" style="margin-top:6px">You film every other week in one batch session and edit on the weeks in between. Two pre-launch batches build a buffer, so the holidays don't break your streak.</p>
+  </div>
+  <div class="weeks" id="weeks"></div>
+</section>
+
+<!-- CONTENT BANK -->
+<section class="panel" id="content" role="tabpanel" hidden>
+  <div>
+    <h2>90-day content bank</h2>
+    <p class="lead" style="margin-top:6px">14 long-form videos, Nov 16 to Feb 13, built from the questions your clients ask, the myths you correct and the topics you said you can teach without research. Each one becomes 6 shorts. See the Shorts Plan tab for the full breakdown.</p>
+  </div>
+  <div class="filters" id="filters"></div>
+  <div class="vids" id="vids"></div>
+  <p class="foot">Titles are working titles. We'll tighten them and plan thumbnails together in your monthly review.</p>
+</section>
+
+<!-- SHORTS -->
+<section class="panel" id="shorts" role="tabpanel" hidden>
+  <div>
+    <h2>Shorts plan</h2>
+    <p class="lead" style="margin-top:6px">Plan the long-form first, then pull every short you can out of it. No second shoot and no second edit. Every short below comes from footage you already filmed for that week's YouTube video.</p>
+  </div>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
+    <div class="card"><div class="label">Total shorts</div><div class="stat">84</div><p class="foot">From 14 long-form videos</p></div>
+    <div class="card"><div class="label">Per video</div><div class="stat">6</div><p class="foot">Same formula every time</p></div>
+    <div class="card"><div class="label">Posting pace</div><div class="stat">1 / day</div><p class="foot">On all 3 platforms</p></div>
+    <div class="card"><div class="label">Before launch</div><div class="stat">~14</div><p class="foot">Reposts of your old IG and TikTok videos, Nov 2–15</p></div>
+  </div>
+
+  <div>
+    <h2 style="font-size:24px">The 6-short formula</h2>
+    <p class="lead" style="margin-top:4px">Every long-form video has these 6 moments in it. Script them in on purpose and the shorts are already there when you edit.</p>
+  </div>
+  <div class="angles" id="slots"></div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="label">Your shorts week</div>
+      <table>
+        <thead><tr><th>Day</th><th>Post</th></tr></thead>
+        <tbody id="shortweek"></tbody>
+      </table>
+      <p class="foot">Launch week has two videos, so post 2 shorts a day, one from each.</p>
+    </div>
+    <div class="card">
+      <div class="label">How to pull them fast</div>
+      <ul class="clean">
+        <li>When you script, write each of the 6 moments so it makes sense on its own. Say the hook as one clean sentence.</li>
+        <li>Pull shorts from the vertical file DualShot records, so there's no reframing.</li>
+        <li>Right after you finish the long-form edit, duplicate the project and cut all 6 shorts in the same CapCut session.</li>
+        <li>Add captions on screen. Most people watch shorts muted.</li>
+        <li>End every caption with: "Full video on my YouTube, link in bio."</li>
+        <li>Schedule all 6 at once so posting takes no time during salon days.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div>
+    <h2 style="font-size:24px">Shorts breakdown by video</h2>
+    <p class="lead" style="margin-top:4px">Story shorts are prompts. Swap in a real moment from your chair (with client consent).</p>
+  </div>
+  <div class="vids" id="shortlist"></div>
+</section>
+
+<!-- FILMING -->
+<section class="panel" id="filming" role="tabpanel" hidden>
+  <div>
+    <h2>Filming system</h2>
+    <p class="lead" style="margin-top:6px">Film while you work, so content doesn't add time to appointments. Get three angles at every station, then move on.</p>
+  </div>
+  <div class="angles">
+    <div class="angle"><b>Angle 1 · Overhead</b>Hands and hair. The technique shot for retwists, interlocking and parting.</div>
+    <div class="angle"><b>Angle 2 · Side</b>You and the client together. Shows the work and the conversation.</div>
+    <div class="angle"><b>Angle 3 · Front</b>You talking to camera. Explain what you're doing and why.</div>
+  </div>
+  <div class="card">
+    <h3>Stations to cover</h3>
+    <p>Consultation chair · styling chair · shampoo bowl · front desk and booking · your walk-in to the salon. Three angles each, 10–20 seconds per angle is plenty.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="label">Batch day, every other week</div>
+      <table>
+        <tr><td class="num">Salon hours</td><td>B-roll during 1–2 client services (with consent), using the 3-angle framework</td></tr>
+        <tr><td class="num">60–90 min</td><td>Talking-head A-roll for 2 videos, after close or on your lightest day</td></tr>
+        <tr><td class="num">10 min</td><td>Back up footage off your phone the same day</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <div class="label">Your weekly time budget (about 6 hrs)</div>
+      <table>
+        <tr><th>Task</th><th>Batch wk</th><th>Edit wk</th></tr>
+        <tr><td>Plan and voice-memo ideas</td><td class="num">0.5 h</td><td class="num">0.5 h</td></tr>
+        <tr><td>Filming</td><td class="num">2 h</td><td class="num">—</td></tr>
+        <tr><td>Editing the long-form in CapCut</td><td class="num">2 h</td><td class="num">3.5 h</td></tr>
+        <tr><td>Pull 6 shorts and schedule them</td><td class="num">1.5 h</td><td class="num">2 h</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Cross-posting routine</h3>
+    <ul class="clean">
+      <li>Film with DualShot Recorder so you get horizontal (YouTube) and vertical (Reels, TikTok, Shorts) in one take.</li>
+      <li>Publish the long-form video on YouTube first.</li>
+      <li>Pull 6 shorts from the finished edit using the 6-short formula (Shorts Plan tab). Post one a day to YouTube Shorts, Instagram Reels and TikTok.</li>
+      <li>Every clip caption points back to the full video. Add your YouTube link to your Linktree.</li>
+      <li>Pin your best-performing Reel to your Instagram profile each month.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Client and stylist consent</h3>
+    <p>Ask before you film, every time. Get a yes on camera or in writing, film hands and hair only for anyone who prefers it, and never show a client's face without permission. We'll cover the full consent scripts in the cohort.</p>
+  </div>
+</section>
+
+<!-- GEAR -->
+<section class="panel" id="gear" role="tabpanel" hidden>
+  <div>
+    <h2>Gear & resources</h2>
+    <p class="lead" style="margin-top:6px">Everything I promised on our call. Items marked "Coming" switch to "Ready" here as soon as I send them.</p>
+    
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Item</th><th>What it's for</th><th>Status</th></tr></thead>
+      <tbody id="restable"></tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h3>Writing scripts in your own voice</h3>
+    <p>Journal or voice-memo your "about me" story in your own words first. Then use an AI tool to reorganize it and cut filler. It keeps the script sounding like you.</p>
+  </div>
+</section>
+
+<!-- TO-DO -->
+<section class="panel" id="todo" role="tabpanel" hidden>
+  <div>
+    <h2>Your to-do list</h2>
+    <p class="lead" style="margin-top:6px">Your checkmarks save on this phone or computer only. Clutch can't see them, so text Clutch when you finish something.</p>
+    <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+    <p class="foot" id="progtext"></p>
+  </div>
+  <div class="card" id="checklist"></div>
+
+  <div>
+    <h2 style="font-size:24px">Decisions to make before our review call</h2>
+  </div>
+  <div class="card accent">
+    <h3>1. Just you, or your stylists too?</h3>
+    <p class="lead">You asked for the pros and cons. Here they are.</p>
+    <div class="pros" style="margin-top:12px">
+      <div>
+        <div class="label">Channel about you</div>
+        <ul class="clean">
+          <li>+ One clear voice, faster to brand</li>
+          <li>+ Fits your education and digital-product goal</li>
+          <li>− Every video depends on you</li>
+          <li>− Less variety to film</li>
+        </ul>
+      </div>
+      <div>
+        <div class="label">Featuring your stylists</div>
+        <ul class="clean">
+          <li>+ More content and a real salon story</li>
+          <li>+ Doubles as recruiting for open chairs</li>
+          <li>− Needs their consent and schedules</li>
+          <li>− Harder if a stylist leaves</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:12px"><b>My suggestion:</b> you're the face of the channel. Bring stylists in as cameos and the occasional interview (video 12 in your content bank).</p>
+  </div>
+  <div class="grid">
+    <div class="card"><h3>2. Channel intro</h3><p>No intro, or under 5 seconds. Viewers drop off during long intros.</p></div>
+    <div class="card"><h3>3. Your batch day</h3><p>Which salon day is lightest? That becomes your filming day every other week.</p></div>
+    <div class="card"><h3>4. Gear budget</h3><p>How much do you want to spend on a mic and a camera? I'll match picks to it.</p></div>
+  </div>
+</section>
+
+</div></main>
+<footer class="site-foot"><div class="wrap"><span class="brand">Channel HQ</span><span>The Clutch Channel Method · Founder VIP</span></div></footer>
+
+<script>
+const TABS=[["overview","Overview"],["roadmap","Roadmap"],["content","Content Bank"],["shorts","Shorts Plan"],["filming","Filming System"],["gear","Gear & Resources"],["todo","To-Do & Decisions"]];
+const tl=document.getElementById("tablist");
+function show(id){
+  TABS.forEach(([t])=>{document.getElementById(t).hidden=t!==id;const b=document.getElementById("tab-"+t);b.setAttribute("aria-selected",t===id)});
+  try{history.replaceState(null,"","#"+id)}catch(e){}
+}
+TABS.forEach(([id,name])=>{const b=document.createElement("button");b.id="tab-"+id;b.role="tab";b.textContent=name;b.onclick=()=>show(id);tl.appendChild(b)});
+const h=(location.hash||"").slice(1);show(TABS.some(t=>t[0]===h)?h:"overview");
+
+// countdown
+(function(){const d=Math.ceil((new Date(2026,10,16)-new Date())/864e5);document.getElementById("countdown").textContent=d>0?d+" days to go":(d>-7?"Launch week":"Launched");})();
+
+// Pillars
+const P={edu:["Loc education","p-edu"],life:["Mom-preneur life","p-life"],pro:["Pro to pro","p-pro"],salon:["Salon owner","p-salon"]};
+const pill=k=>`<span class="pill ${P[k][1]}">${P[k][0]}</span>`;
+
+// Roadmap
+const WEEKS=[
+ ["Oct 26","Set up",["Rename your COVID-era YouTube channel to House of Bella Rose Salon and clear old videos","Write your channel bio (who you are, what you specialize in, how to book)","Make your banner in Canva: brand colors, your photo, your pillars","Download DualShot Recorder and CapCut; edit one short video a day","Journal or voice-memo your about-me story"],[]],
+ ["Nov 2","Batch day 1",["Film video 1 (About Me) and video 2 (Maintenance schedule)","Start the Shorts repost sprint: 1 old IG or TikTok video to YouTube Shorts per day"],["film"]],
+ ["Nov 9","Batch day 2",["Film videos 3 and 4","Edit videos 1 and 2, write titles, make thumbnails","Keep the daily Shorts repost going"],["film"]],
+ ["Nov 16","LAUNCH",["Publish About Me and Maintenance back to back, your intro series","Announce your posting schedule in the About Me video","Pull 6 shorts from each video and post 2 a day (one from each) across IG, TikTok and Shorts"],["launch"]],
+ ["Nov 23","Batch day 3",["Film video 5 (day in the life, across a full salon day) and video 6","Publish video 3"],["film"]],
+ ["Nov 30","Edit week",["Publish video 4","First monthly thumbnail review with Clutch"],[]],
+ ["Dec 7","Batch day 4",["Film videos 7 and 8","Publish video 5"],["film"]],
+ ["Dec 14","Edit week",["Publish video 6"],[]],
+ ["Dec 21","Batch day 5",["Film videos 9 and 10 (move earlier if the holidays get busy)","Publish video 7","December thumbnail review"],["film"]],
+ ["Dec 28","Edit week",["Publish video 8","Look at your top 3 shorts: what hooked people?"],[]],
+ ["Jan 4","Batch day 6",["Film videos 11 and 12","Publish video 9"],["film"]],
+ ["Jan 11","Edit week",["Publish video 10"],[]],
+ ["Jan 18","Batch day 7",["Film videos 13 and 14","Publish video 11","January thumbnail review"],["film"]],
+ ["Jan 25","Graduation",["Publish video 12","Cohort graduation Jan 27"],[]],
+ ["Feb 1","VIP support",["Publish video 13","Pick your first digital product and plan the video that sells it"],[]],
+ ["Feb 8","VIP support",["Publish video 14","Plan the next 90 days with Clutch"],[]],
+];
+document.getElementById("weeks").innerHTML=WEEKS.map(([d,t,items,f])=>`
+ <div class="week ${f.includes("launch")?"launchwk":""}">
+  <div class="when">Week of ${d}<small>${t}</small></div>
+  <div><ul>${items.map(i=>`<li>${i}</li>`).join("")}</ul></div>
+ </div>`).join("");
+
+// Content bank
+const SLOTS=[
+ ["Hook","The opening question or promise of the video, as a standalone 15–30 second clip.","Pull from: your intro"],
+ ["Quick answer","The straight answer to the video's question in 30 seconds.","Pull from: your first main point"],
+ ["Demo","Overhead or side footage of the technique, with on-screen text or voiceover.","Pull from: your B-roll"],
+ ["Myth or mistake","The \"don't do this\" moment. These get the most comments and shares.","Pull from: your correction section"],
+ ["Story","A real moment from your chair or your life that makes the point.","Pull from: your talking-head story"],
+ ["Teaser","A cliffhanger that sends people to the full video.","Pull from: your strongest tip, cut before the payoff"],
+];
+const VIDS=[
+ ["Nov 16","About Me: salon owner, mom of 4, no family nearby. Why I'm starting YouTube","life","Your story and posting schedule. Sets up every future video.",["I run a salon, raise 4 kids and have no family nearby. Here's why I'm starting YouTube","Who I am and what I do, in 30 seconds","Walk through House of Bella Rose with me","The biggest myth about owning a salon","The day my 2-year-old came to work with me","What's coming to this channel every week"],"Intake: lifestyle content"],
+ ["Nov 16","How often should you retwist? A loctician's maintenance schedule","edu","Answers one of your most-asked client questions.",["How often should you really retwist your locs?","The retwist timeline: starter locs vs. mature locs","Watch one retwist section from overhead","Retwisting too often can thin your locs","What I found when a client waited too long","3 signs you're overdue (full breakdown on YouTube)"],"Top client question"],
+ ["Nov 23","Palm rolling vs. interlocking: which is right for your locs?","edu","Show both methods side by side with the overhead angle.",["Palm roll or interlock? Here's how I decide","If you work out or swim a lot, here's my answer","Palm rolling vs. interlocking, side by side","Interlocking doesn't ruin locs. Doing it wrong does","Why this client switched methods","The one question that decides your method"],"Top client question"],
+ ["Nov 30","Dirty locs don't grow faster: 3 loc myths I correct every week","edu","Your misinformation list, debunked from behind the chair.",["Dirty locs do NOT grow faster","Why clean locs actually lock better","What buildup looks like up close","\"I have locs so I don't do anything to them\"","The myth I hear in my chair every single week","Myth #3 surprises everybody (full video)"],"Intake: misinformation"],
+ ["Dec 7","Day in the life of a salon owner and mom of 4","life","Film across one full day: bus stop, daycare, salon, dinner.",["6:30 a.m.: a day as a salon owner and mom of 4","How I get 4 kids out the door in under an hour","Behind the chair at House of Bella Rose","\"Salon owners just do hair all day.\" Here's the rest of it","When the baby comes to work","What happens after the salon closes"],"Call: day-in-the-life idea"],
+ ["Dec 14","What products should you use on your locs? What I use in my salon","edu","Natural spot for your rose water and oil.",["What I actually use on locs in my salon","The 3 products every loc wearer needs","How I apply oil without causing buildup","Products I'd never put on locs","Why I carry rose water in my salon","My full product list (on YouTube)"],"Top client question"],
+ ["Dec 21","Should you style starter locs? What happens if you do","edu","Gift-season styling question, perfectly timed.",["Can you style starter locs?","How long to wait before styling starters","A starter-safe style in under a minute","This style will unravel your starters","A holiday style that set a client's starters back","3 safe holiday styles for starters"],"Top client question"],
+ ["Dec 28","How I run my booking calendar: when my books open and why","salon","Talk to clients and to other pros at the same time.",["Why I open my books the way I do","When my calendar opens and how to get in","How I plan my booking month","Fully booked isn't the goal","A booking mistake I made early on","Locticians: here's my booking schedule"],"Top client question + booking topic"],
+ ["Jan 4","\"I have locs so I do nothing\": why skipping maintenance costs more","edu","New-year reset angle.",["What months of no maintenance does to locs","Maintenance vs. repair: which costs you more","Repair work, before and after","\"Locs are no-maintenance\" is a myth","A client who started the year with a reset","Your loc reset checklist for the new year"],"Intake: misinformation"],
+ ["Jan 11","Two-strands every visit? How constant styling affects your locs","edu","Third myth from your intake form.",["Two-strands every visit? Watch this first","How often styling is actually OK","A low-tension style from overhead","Tight styles can thin your locs","The thinning I spotted on a regular client","My go-to low-tension styles"],"Intake: misinformation"],
+ ["Jan 18","Hair school vs. apprenticeship: how I'd start over as a loctician","pro","First pro-to-pro video. Builds your teaching audience.",["Hair school or apprenticeship? Here's what I'd do","What hair school didn't teach me about locs","What I teach on day one","\"Watching YouTube is enough training\"","My first loc client ever","Advice for brand-new locticians"],"Intake: hair school, apprenticeship"],
+ ["Jan 25","Meet my stylists: inside House of Bella Rose","salon","Depends on your decision about featuring your team.",["Meet the team at House of Bella Rose","What it takes to work in my salon","A day on the floor with my stylists","A team doesn't mean less work","Why I hired my first stylist","Open chair? Take the tour"],"Call: staff cameos"],
+ ["Feb 1","Loc treatments explained: detox, deep conditioning and when you need them","edu","Pairs with a service you can book.",["Do your locs need a detox?","Detox vs. deep condition in 30 seconds","Detox water: before and after","A detox isn't the same as a regular wash","A client's first detox","How to book a treatment with me"],"Intake: hair treatments"],
+ ["Feb 8","How I book clients without paid ads","pro","Sets up your first digital product or coaching call.",["I stay booked without paying for ads","My booking system in 60 seconds","The kind of content that brings in bookings","You don't need ads to stay booked","What changed when I started posting on purpose","Want my system? Here's how to work with me"],"Intake: booking clients + digital products goal"],
+];
+let filter="all";
+const fb=document.getElementById("filters");
+[["all","All 14"],...Object.entries(P).map(([k,v])=>[k,v[0]])].forEach(([k,n])=>{const b=document.createElement("button");b.textContent=n;b.dataset.k=k;b.onclick=()=>{filter=k;renderVids()};fb.appendChild(b)});
+function renderVids(){
+ [...fb.children].forEach(b=>b.setAttribute("aria-pressed",b.dataset.k===filter));
+ document.getElementById("vids").innerHTML=VIDS.map((v,i)=>[v,i]).filter(([v])=>filter==="all"||v[2]===filter).map(([[d,t,k,note,shorts,src],i])=>`
+  <article class="vid">
+   <div><div class="num">VIDEO ${String(i+1).padStart(2,"0")}</div><div class="date">Wk of ${d}</div></div>
+   <div>
+    <div class="tags" style="margin:0 0 6px">${pill(k)}</div>
+    <h3>${t}</h3>
+    <p class="meta">${note}</p>
+    <details><summary>6 shorts from this video</summary><ul class="clean" style="margin-top:6px">${shorts.map((s,j)=>`<li><b>${SLOTS[j][0]}:</b> ${s}</li>`).join("")}</ul></details>
+    <p class="src">From: ${src}</p>
+   </div>
+  </article>`).join("");
+}
+renderVids();
+
+// Shorts tab
+document.getElementById("slots").innerHTML=SLOTS.map(([n,d,f],i)=>`<div class="angle"><b>${i+1} · ${n}</b>${d}<div class="foot" style="margin-top:6px">${f}</div></div>`).join("");
+document.getElementById("shortweek").innerHTML=[["Day 1","Long-form video goes live on YouTube"]].concat(SLOTS.map(([n],i)=>["Day "+(i+2),"Short "+(i+1)+": "+n])).map(([d,t])=>`<tr><td class="num">${d}</td><td>${t}</td></tr>`).join("");
+document.getElementById("shortlist").innerHTML=VIDS.map(([d,t,k,note,shorts],i)=>`
+ <article class="vid">
+  <div><div class="num">VIDEO ${String(i+1).padStart(2,"0")}</div><div class="date">Wk of ${d}</div></div>
+  <div>
+   <div class="tags" style="margin:0 0 6px">${pill(k)}</div>
+   <h3>${t}</h3>
+   <details ${i<2?"open":""}><summary>6 shorts</summary>
+    <div class="tablewrap" style="margin-top:8px"><table>
+     <thead><tr><th>Day</th><th>Type</th><th>Short</th></tr></thead>
+     <tbody>${shorts.map((s,j)=>`<tr><td class="num">Day ${j+2}</td><td><span class="pill p-salon">${SLOTS[j][0]}</span></td><td>${s}</td></tr>`).join("")}</tbody>
+    </table></div>
+   </details>
+  </div>
+ </article>`).join("");
+
+// Shared data
+const esc=t=>String(t??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const RES=[
+ {id:"dualshot",name:"DualShot Recorder",sub:"iPhone app by creator Derrick Downey Jr., $6.99 one-time",what:"Records vertical and horizontal video at the same time on your iPhone 17",def:"ready"},
+ {id:"capcut",name:"CapCut",sub:"Desktop and mobile",what:"Your editing app. Edit one short video a day to build the habit before the editing class",def:"ready"},
+ {id:"mic",name:"Microphone picks",what:"Clear audio for talking-head and in-salon videos",def:"coming"},
+ {id:"camera",name:"Camera options",sub:"Insta360 and a vlogging camera",what:"Better quality and frees up phone storage",def:"coming"},
+ {id:"setupvideo",name:"Salon filming setup video",what:"My mounted overhead, side and shampoo-bowl setup",def:"coming"},
+ {id:"download",name:"Video download tool",what:"Pull your existing IG and TikTok videos to repost as YouTube Shorts",def:"coming"},
+ {id:"supplier",name:"Private label supplier",what:"Shampoo gallons and product development help",def:"coming"},
+];
+const TODO=[
+ ["bio","Send Clutch your bio: background, specialties, booking link"],
+ ["rename","Rename your existing YouTube channel and clear old videos"],
+ ["banner","Make your channel banner in Canva"],
+ ["dualshot","Download DualShot Recorder"],
+ ["capcut","Download CapCut and edit one short video a day"],
+ ["aboutme","Journal or voice-memo your about-me story"],
+ ["ai","Try an AI tool for organizing scripts"],
+ ["linktree","Add your YouTube channel to your Linktree"],
+ ["stylists","Decide: just you, or stylists too"],
+ ["batchday","Tell Clutch your lightest salon day"],
+ ["budget","Tell Clutch your gear budget"],
+ ["reviewcall","Pick a time for our 30-minute review call"],
+];
+let db=null, owner=false, resState={}, todoState={}, synced=false, todoErr="";
+const LKEY="bpr-todo-v2";
+function loadLocal(){try{return JSON.parse(localStorage.getItem(LKEY)||"{}")}catch(e){return {}}}
+function fmt(ts){return ts?new Date(ts).toLocaleDateString(undefined,{month:"short",day:"numeric"}):""}
+
+function renderRes(){
+ document.getElementById("restable").innerHTML=RES.map(r=>{
+  const s=resState[r.id]||{}; const st=s.status||r.def;
+  const link=(typeof s.link==="string"&&/^https:\/\//.test(s.link))?`<br><a href="${esc(s.link)}" target="_blank" rel="noopener">Open link</a>`:"";
+  const note=s.note?`<br><span class="foot">${esc(s.note)}</span>`:"";
+  const btn=owner&&db?`<button class="ownerbtn" data-res="${r.id}">Mark ${st==="ready"?"coming":"ready"}</button>`:"";
+  return `<tr><td><b>${esc(r.name)}</b>${r.sub?`<br><span class="foot">${esc(r.sub)}</span>`:""}</td><td>${esc(r.what)}${note}${link}</td><td><span class="pill ${st==="ready"?"p-ready":"p-wait"}">${st==="ready"?"Ready":"Coming"}</span>${btn}</td></tr>`;
+ }).join("");
+}
+
+
+const cl=document.getElementById("checklist");
+function renderTodo(){
+ const state=synced?todoState:loadLocal();
+ cl.innerHTML=TODO.map(([k,t])=>{const d=state[k]||{};return `<div class="check ${d.done?"is-done":""}"><input type="checkbox" id="todo-${k}" ${d.done?"checked":""}><label for="todo-${k}">${esc(t)}${d.done&&d.at?`<span class="when-done">Done ${fmt(d.at)}</span>`:""}</label></div>`}).join("")+(todoErr?`<p class="err">${esc(todoErr)}</p>`:"");
+ const n=TODO.filter(([k])=>(state[k]||{}).done).length;
+ document.getElementById("bar").style.width=(n/TODO.length*100)+"%";
+ document.getElementById("progtext").textContent=n+" of "+TODO.length+" done";
+}
+cl.addEventListener("change",e=>{
+ const k=e.target.id.replace("todo-",""); const done=e.target.checked;
+ const st=loadLocal(); st[k]={done,at:Date.now()}; try{localStorage.setItem(LKEY,JSON.stringify(st))}catch(x){} renderTodo();
+});
+renderRes(); renderTodo();
+
+
+</script>
+
+</body>
+</html>
